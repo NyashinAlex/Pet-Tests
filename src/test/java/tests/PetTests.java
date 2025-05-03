@@ -2,14 +2,20 @@ package tests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import steps.rest.Pet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import swagger.petstore.Application;
+import swagger.petstore.rest.pet.Pet;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SpringBootTest(classes = Application.class)
 public class PetTests {
 
-    private final Pet pet = new Pet();
+    @Autowired
+    private Pet pet;
+
     private final List<String> photoUrls = new ArrayList<>();
 
     @Test

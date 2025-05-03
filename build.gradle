@@ -5,6 +5,8 @@ plugins {
     id 'io.freefair.lombok' version '8.4'
 }
 
+group = 'swagger.petstore'
+
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21

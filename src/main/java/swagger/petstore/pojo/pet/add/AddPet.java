@@ -1,4 +1,4 @@
-package pojo.pet.add;
+package swagger.petstore.pojo.pet.add;
 
 import lombok.Builder;
 import lombok.Data;

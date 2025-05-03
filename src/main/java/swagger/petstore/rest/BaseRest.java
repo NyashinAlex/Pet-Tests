@@ -1,4 +1,4 @@
-package rest;
+package swagger.petstore.rest;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -15,9 +15,11 @@ public class BaseRest {
         RestAssured.given()
                 .contentType(ContentType.JSON)
                 .log().all()
-                .basePath(baseUrl + endpoint)
+                .baseUri(baseUrl)
                 .body(body)
                 .when()
-                .post(endpoint);
+                .post(endpoint)
+                .then()
+                .log().all();
     }
 }
