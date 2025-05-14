@@ -32,12 +32,23 @@ dependencies {
     implementation 'com.codeborne:selenide:7.0.4'
     implementation 'io.qameta.allure:allure-junit5:2.25.0'
     implementation 'io.rest-assured:rest-assured:5.4.0'
+    implementation 'org.junit-pioneer:junit-pioneer:2.3.0'
 }
 
 test {
     useJUnitPlatform()
 
     testLogging {
+        exceptionFormat = "full"
         showStandardStreams = true
+        showCauses = true
+        showStackTraces = true
+
+        beforeTest { descriptor ->
+            println "Starting test: ${descriptor.name}"
+        }
+        afterTest { descriptor, result ->
+            println "Finished test: ${descriptor.name} with result: ${result.resultType}"
+        }
     }
 }

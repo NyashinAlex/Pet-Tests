@@ -1,7 +1,9 @@
 package tests;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.RetryingTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import swagger.petstore.Application;
@@ -10,7 +12,10 @@ import swagger.petstore.rest.pet.Pet;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest(classes = Application.class)
+@Slf4j
 public class PetTests {
 
     @Autowired
@@ -22,6 +27,12 @@ public class PetTests {
     void test() {
         photoUrls.add("fffff");
         pet.addPet("Dog", photoUrls);
+    }
+
+    @RetryingTest(5)
+    void test2() {
+        log.info("Error: not boolean");
+        assertTrue(1 < 0);
     }
 
     @AfterEach
