@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.4'
     id 'java'
     id 'io.freefair.lombok' version '8.4'
+    id 'org.gradle.test-retry' version '1.5.8'
 }
 
 group = 'swagger.petstore'
@@ -37,6 +38,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+
+    retry {
+        maxRetries = 2
+        maxFailures = 5
+        failOnPassedAfterRetry = false
+    }
 
     testLogging {
         exceptionFormat = "full"
